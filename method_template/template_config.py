@@ -38,6 +38,7 @@ method_template = MethodSpecification(
             ),
             model=TemplateModelConfig(
                 eval_num_rays_per_chunk=1 << 15,
+                average_init_density=0.01,
             ),
         ),
         optimizers={
@@ -47,7 +48,7 @@ method_template = MethodSpecification(
                 "scheduler": ExponentialDecaySchedulerConfig(lr_final=0.0001, max_steps=200000),
             },
             "fields": {
-                "optimizer": RAdamOptimizerConfig(lr=1e-2, eps=1e-15),
+                "optimizer": AdamOptimizerConfig(lr=1e-2, eps=1e-15),
                 "scheduler": ExponentialDecaySchedulerConfig(lr_final=1e-4, max_steps=50000),
             },
             "camera_opt": {
